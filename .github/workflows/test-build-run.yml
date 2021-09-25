@@ -1,5 +1,5 @@
-name: GitHub Actions Demo
-on: [push]
+name: Testing, building, and running app
+on: [pull request]
 jobs:
   build:
     strategy:
