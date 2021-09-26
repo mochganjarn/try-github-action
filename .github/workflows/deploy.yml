@@ -16,4 +16,4 @@ jobs:
           heroku_app_name: "sheltered-dusk-39701" #Must be unique in Heroku
           heroku_email: "mganjar.mg@gmail.com"
         env:
-          HD_APP_PORT: ${{secrets.APP_PORT}}
+          HD_APP_ENV: "production"
