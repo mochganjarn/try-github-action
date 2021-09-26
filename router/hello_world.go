@@ -17,7 +17,7 @@ func Router(app *fiber.App) {
 		}
 	}
 
-	port := os.Getenv("APP_PORT")
+	port := os.Getenv("PORT")
 	hello_route(app)
 	app.Listen(":" + port)
 }
