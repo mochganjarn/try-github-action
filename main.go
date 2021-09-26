@@ -1,11 +1,12 @@
 package main
 
-import "fmt"
-
-func cetak_hello() string {
-	return "hello world"
-}
+import (
+	"github.com/gofiber/fiber/v2"
+	"github.com/mochganjarn/try-github-action/router"
+)
 
 func main() {
-	fmt.Println(cetak_hello())
+	app := fiber.New()
+
+	router.Router(app)
 }
