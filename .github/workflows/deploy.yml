@@ -15,3 +15,5 @@ jobs:
           heroku_api_key: ${{secrets.HEROKU_API_KEY}}
           heroku_app_name: "sheltered-dusk-39701" #Must be unique in Heroku
           heroku_email: "mganjar.mg@gmail.com"
+        env:
+          APP_PORT: ${{secrets.APP_PORT}}

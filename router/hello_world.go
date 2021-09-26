@@ -13,7 +13,7 @@ func Router(app *fiber.App) {
 	// 	log.Fatal("Error loading .env file")
 	// }
 
-	port := os.Getenv("PORT")
+	port := os.Getenv("APP_PORT")
 	hello_route(app)
 	app.Listen(":" + port)
 }
