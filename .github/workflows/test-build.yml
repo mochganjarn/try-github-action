@@ -48,22 +48,22 @@ jobs:
     ## runs go test
     - name: Test
       run: make test
-  run:
-    strategy:
-      matrix:
-        go-version: [1.17.x]
-        platform: [ubuntu-latest]
+  # run:
+  #   strategy:
+  #     matrix:
+  #       go-version: [1.17.x]
+  #       platform: [ubuntu-latest]
     
-    runs-on: ${{ matrix.platform }}
+  #   runs-on: ${{ matrix.platform }}
 
-    steps:
-    - name: Install Go
-      uses: actions/setup-go@v2
-      with:
-        go-version: ${{ matrix.go-version }}
+  #   steps:
+  #   - name: Install Go
+  #     uses: actions/setup-go@v2
+  #     with:
+  #       go-version: ${{ matrix.go-version }}
 
-    - name: Checkout code
-      uses: actions/checkout@v2
+  #   - name: Checkout code
+  #     uses: actions/checkout@v2
     
-    - name: Run
-      run: make run
+  #   - name: Run
+  #     run: make run
