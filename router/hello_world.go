@@ -11,7 +11,7 @@ import (
 
 func Router(app *fiber.App) {
 	err := godotenv.Load()
-	if os.Getenv("APP_ENV") != "production" {
+	if os.Getenv("APP_ENV") == "development" {
 		if err != nil {
 			log.Fatal("Error loading .env file")
 		}
