@@ -19,9 +19,17 @@ func Router(app *fiber.App) {
 
 	port := os.Getenv("PORT")
 	hello_route(app)
-	app.Listen(":" + port)
+	user_route(app)
+	if err := app.Listen(":" + port); err != nil {
+		panic(err)
+	}
 }
 
 func hello_route(hello *fiber.App) {
 	hello.Get("/", handler.CetakHello)
+}
+
+func user_route(app *fiber.App) {
+	app.Get("/follower/:userid", handler.Follower)
+	app.Get("/:userid/detail", handler.Detail)
 }

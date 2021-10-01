@@ -8,7 +8,7 @@ import (
 	"github.com/stretchr/testify/assert" // add Testify package
 )
 
-func TestHelloRoute(t *testing.T) {
+func TestRouter(t *testing.T) {
 	// Define a structure for specifying input and output data
 	// of a single test case
 	tests := []struct {
@@ -24,6 +24,18 @@ func TestHelloRoute(t *testing.T) {
 		},
 		// Second test case
 		{
+			description:  "get HTTP status 200",
+			route:        "/follower/SammyShark",
+			expectedCode: 200,
+		},
+		// Third test case
+		{
+			description:  "get HTTP status 200",
+			route:        "/sammy/detail",
+			expectedCode: 200,
+		},
+		// Fourth test case
+		{
 			description:  "get HTTP status 404, when route is not exists",
 			route:        "/not-found",
 			expectedCode: 404,
@@ -35,6 +47,7 @@ func TestHelloRoute(t *testing.T) {
 
 	// Create route with GET method for test
 	hello_route(app)
+	user_route(app)
 	// Iterate through test single test cases
 	for _, test := range tests {
 		// Create a new http request with the route from the test case
@@ -43,8 +56,10 @@ func TestHelloRoute(t *testing.T) {
 		// Perform the request plain with the app,
 		// the second argument is a request latency
 		// (set to -1 for no latency)
-		resp, _ := app.Test(req, 1)
-
+		resp, err := app.Test(req, 5000)
+		if err != nil {
+			t.Errorf("Error %v", err)
+		}
 		// Verify, if the status code is as expected
 		assert.Equalf(t, test.expectedCode, resp.StatusCode, test.description)
 	}
